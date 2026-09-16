@@ -1,0 +1,9 @@
+.venv/
+milan_dataset/
+artifacts/
+__pycache__/
+*.pyc
+.pytest_cache/
+results/figures/
+
+docs/

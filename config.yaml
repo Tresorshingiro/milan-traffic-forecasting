@@ -1,0 +1,33 @@
+seed: 42
+
+paths:
+  raw_dir: milan_dataset
+  artifacts: artifacts
+  results: results
+
+grid:
+  n_squares: 10000
+  slots_per_day: 144
+  n_days: 62
+  start_date: "2013-11-01"
+  tz: Europe/Rome
+
+# Train days = 38
+# Validation days = 7
+# Test days = 7
+
+splits:
+  train_days: [0, 38]
+  val_days: [38, 45]
+  test_days: [45, 52]
+
+areas:
+  n_top: 3
+  extra: [4159, 4556]
+
+training:
+  batch_size: 64
+  max_epochs: 100
+  patience: 10
+  clip_norm: 1.0
+  
