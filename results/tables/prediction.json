@@ -1,0 +1,19 @@
+{
+  "hypothesis": "H1: areas with high seasonal strength and low permutation/spectral entropy favour DLinear; areas with high entropy and high burstiness favour TCN/GRU.",
+  "predictability_score": {
+    "5161": -0.20514887662649853,
+    "4159": -0.42874541172848807,
+    "4556": -0.4484319031212054
+  },
+  "most_to_least_predictable": [
+    5161,
+    4159,
+    4556
+  ],
+  "predicted_winner_by_area": {
+    "5161": "dlinear",
+    "4159": "dlinear",
+    "4556": "tcn_or_gru"
+  },
+  "recorded_before_reading_any_forecast_result": true
+}
