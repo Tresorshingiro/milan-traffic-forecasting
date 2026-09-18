@@ -93,3 +93,4 @@ def test_model_capacity_ordering_matches_the_hypothesis():
     sizes = {n: count_parameters(build_model(n, L=144)) for n in MODELS}
     assert sizes["dlinear"] < sizes["gru"]
     assert sizes["dlinear"] < sizes["tcn"]
+
