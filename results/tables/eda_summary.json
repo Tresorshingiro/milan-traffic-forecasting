@@ -1,0 +1,48 @@
+{
+  "distribution": {
+    "n_areas": 10000,
+    "n_zero_areas": 0,
+    "mean": 555289.4187329455,
+    "median": 277871.1007089615,
+    "std": 892551.1012550505,
+    "skew": 4.264742435245138,
+    "gini": 0.6080800352591219,
+    "top_1pct_share": 0.11049206119204197,
+    "max_over_median": 45.848813770503234
+  },
+  "gini": 0.6080800352591219,
+  "top3_areas": [
+    5161,
+    5059,
+    5259
+  ],
+  "required_areas": [
+    5161,
+    5059,
+    5259,
+    4159,
+    4556
+  ],
+  "busiest_area": 5161,
+  "seasonal_strength": 0.9495260750200684,
+  "acf": {
+    "acf_1": 0.982337114581758,
+    "acf_144": 0.8536658286788984,
+    "acf_288": 0.7266405838582969,
+    "first_zero_crossing": 36
+  },
+  "stationarity": {
+    "adf_stat": -15.390700977442965,
+    "adf_p": 3.3128755049246853e-28,
+    "kpss_stat": 0.08362634182701614,
+    "kpss_p": 0.1,
+    "interpretation": "Both tests agree the series is stationary (ADF rejects a unit root; KPSS does not reject stationarity)."
+  },
+  "dominant_periods_hours": [
+    24.0,
+    12.0,
+    27.63636363636364,
+    182.4,
+    82.90909090909092
+  ]
+}
