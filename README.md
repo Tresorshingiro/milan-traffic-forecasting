@@ -123,5 +123,5 @@ forecasts with a known one-step lag).
 
 ## Report, code, and video
 
-- Report: (https://docs.google.com/document/d/1gAXfgkdVRkq6XqL4_szBfq5SvF2wtB0g/edit?usp=sharing&ouid=117042984136913499650&rtpof=true&sd=true)
+- Report: (https://docs.google.com/document/d/1djuS5BfEGswUqrNFpP9VkG1wCiaibfBnKtV-DlDRxHA/edit?usp=sharing)
 - Video: (https://drive.google.com/file/d/1RYTeZHuzO_rOjU73nLzzEZoQEyev8UU0/view?usp=sharing)
