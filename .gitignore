@@ -1,6 +1,5 @@
 .venv/
 milan_dataset/
-artifacts/
 __pycache__/
 *.pyc
 .pytest_cache/
@@ -8,3 +7,5 @@ __pycache__/
 docs/
 outline.md
 report_draft.docx
+video_script.md
+artifacts/internet.npy

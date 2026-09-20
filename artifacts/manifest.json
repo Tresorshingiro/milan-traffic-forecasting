@@ -1,0 +1,374 @@
+{
+  "2013-11-01": {
+    "fingerprint": "322874887:a02a0e86a23fea49",
+    "nonzero_frac": 0.999962,
+    "seconds": 7.023,
+    "sum": 82479240.0
+  },
+  "2013-11-02": {
+    "fingerprint": "315164060:994578096d18e2fe",
+    "nonzero_frac": 0.999932,
+    "seconds": 6.868,
+    "sum": 80991016.0
+  },
+  "2013-11-03": {
+    "fingerprint": "313058344:bf3594093feae29b",
+    "nonzero_frac": 0.999899,
+    "seconds": 6.664,
+    "sum": 83509192.0
+  },
+  "2013-11-04": {
+    "fingerprint": "361097689:4b43bdd9fd70e46f",
+    "nonzero_frac": 0.999912,
+    "seconds": 7.527,
+    "sum": 108106872.0
+  },
+  "2013-11-05": {
+    "fingerprint": "372894401:e2986bfb55eab884",
+    "nonzero_frac": 0.999922,
+    "seconds": 7.908,
+    "sum": 111124136.0
+  },
+  "2013-11-06": {
+    "fingerprint": "374625924:1476426e80d45870",
+    "nonzero_frac": 0.999915,
+    "seconds": 7.862,
+    "sum": 111009104.0
+  },
+  "2013-11-07": {
+    "fingerprint": "373036285:6b38dbb4208989c9",
+    "nonzero_frac": 0.999912,
+    "seconds": 7.702,
+    "sum": 110396472.0
+  },
+  "2013-11-08": {
+    "fingerprint": "376123111:e8d2cfc1400744aa",
+    "nonzero_frac": 0.999919,
+    "seconds": 7.7,
+    "sum": 110715232.0
+  },
+  "2013-11-09": {
+    "fingerprint": "332440742:3a9aedd12e416a86",
+    "nonzero_frac": 0.999917,
+    "seconds": 7.018,
+    "sum": 97376840.0
+  },
+  "2013-11-10": {
+    "fingerprint": "314441422:3ee28a649d713d70",
+    "nonzero_frac": 0.999913,
+    "seconds": 6.568,
+    "sum": 91693072.0
+  },
+  "2013-11-11": {
+    "fingerprint": "351945243:e679a2c344d94ea1",
+    "nonzero_frac": 0.99992,
+    "seconds": 7.447,
+    "sum": 107100848.0
+  },
+  "2013-11-12": {
+    "fingerprint": "358347374:8c8ce4e8af360b4e",
+    "nonzero_frac": 0.999888,
+    "seconds": 7.316,
+    "sum": 108251680.0
+  },
+  "2013-11-13": {
+    "fingerprint": "362539357:b4785db7c33fb2e5",
+    "nonzero_frac": 0.999887,
+    "seconds": 7.544,
+    "sum": 108145488.0
+  },
+  "2013-11-14": {
+    "fingerprint": "363552765:7d42eed678b3f403",
+    "nonzero_frac": 0.99989,
+    "seconds": 7.664,
+    "sum": 108833448.0
+  },
+  "2013-11-15": {
+    "fingerprint": "364814415:9820444fd73a1ecd",
+    "nonzero_frac": 0.999885,
+    "seconds": 7.586,
+    "sum": 106499272.0
+  },
+  "2013-11-16": {
+    "fingerprint": "321048116:ae9de5984b57fa17",
+    "nonzero_frac": 0.999881,
+    "seconds": 6.779,
+    "sum": 90387376.0
+  },
+  "2013-11-17": {
+    "fingerprint": "307197776:049cd964a759e1fc",
+    "nonzero_frac": 0.999871,
+    "seconds": 6.496,
+    "sum": 84539728.0
+  },
+  "2013-11-18": {
+    "fingerprint": "348325345:0a4b8f2ead822084",
+    "nonzero_frac": 0.999879,
+    "seconds": 7.267,
+    "sum": 103692232.0
+  },
+  "2013-11-19": {
+    "fingerprint": "356545029:0f94fc81d52a7b6c",
+    "nonzero_frac": 0.999888,
+    "seconds": 7.333,
+    "sum": 106548552.0
+  },
+  "2013-11-20": {
+    "fingerprint": "360144384:760f473f58921262",
+    "nonzero_frac": 0.999878,
+    "seconds": 7.628,
+    "sum": 105368584.0
+  },
+  "2013-11-21": {
+    "fingerprint": "358700264:ba5f897b1d8d59d5",
+    "nonzero_frac": 0.999898,
+    "seconds": 7.587,
+    "sum": 105939824.0
+  },
+  "2013-11-22": {
+    "fingerprint": "360316105:4f62c275170822b4",
+    "nonzero_frac": 0.999894,
+    "seconds": 7.562,
+    "sum": 104045080.0
+  },
+  "2013-11-23": {
+    "fingerprint": "317406788:98b7c1eae786f099",
+    "nonzero_frac": 0.999879,
+    "seconds": 6.838,
+    "sum": 91507536.0
+  },
+  "2013-11-24": {
+    "fingerprint": "303987293:f7446a6bca1f86e7",
+    "nonzero_frac": 0.99988,
+    "seconds": 6.501,
+    "sum": 86125728.0
+  },
+  "2013-11-25": {
+    "fingerprint": "345276784:42789f4a035dd5cb",
+    "nonzero_frac": 0.999873,
+    "seconds": 7.313,
+    "sum": 100406576.0
+  },
+  "2013-11-26": {
+    "fingerprint": "352033486:1d3ce09114b2d581",
+    "nonzero_frac": 0.999729,
+    "seconds": 7.435,
+    "sum": 100795848.0
+  },
+  "2013-11-27": {
+    "fingerprint": "349777785:6126cb2489d7e046",
+    "nonzero_frac": 0.999824,
+    "seconds": 7.441,
+    "sum": 100055400.0
+  },
+  "2013-11-28": {
+    "fingerprint": "350899256:745b813bacf3bcb8",
+    "nonzero_frac": 0.99961,
+    "seconds": 7.318,
+    "sum": 96851784.0
+  },
+  "2013-11-29": {
+    "fingerprint": "351607243:da2ff5b31007d983",
+    "nonzero_frac": 0.999235,
+    "seconds": 7.383,
+    "sum": 95207744.0
+  },
+  "2013-11-30": {
+    "fingerprint": "311422116:6920b21762e979c7",
+    "nonzero_frac": 0.999149,
+    "seconds": 6.593,
+    "sum": 84984160.0
+  },
+  "2013-12-01": {
+    "fingerprint": "298715145:b769c50e2406f5e6",
+    "nonzero_frac": 0.999052,
+    "seconds": 6.404,
+    "sum": 80423152.0
+  },
+  "2013-12-02": {
+    "fingerprint": "341919663:b2c38faf03e1f710",
+    "nonzero_frac": 0.998375,
+    "seconds": 7.13,
+    "sum": 94357432.0
+  },
+  "2013-12-03": {
+    "fingerprint": "353947238:f9db2aac46fc158b",
+    "nonzero_frac": 0.997945,
+    "seconds": 7.417,
+    "sum": 96992168.0
+  },
+  "2013-12-04": {
+    "fingerprint": "352032545:30abca1ef1246fcb",
+    "nonzero_frac": 0.997819,
+    "seconds": 7.42,
+    "sum": 95454888.0
+  },
+  "2013-12-05": {
+    "fingerprint": "353519447:1eebb489a56b2e69",
+    "nonzero_frac": 0.997738,
+    "seconds": 7.449,
+    "sum": 93902080.0
+  },
+  "2013-12-06": {
+    "fingerprint": "354028475:088f295194dd16ba",
+    "nonzero_frac": 0.997635,
+    "seconds": 7.462,
+    "sum": 93572184.0
+  },
+  "2013-12-07": {
+    "fingerprint": "307172220:dbbab8b8c7f5082d",
+    "nonzero_frac": 0.99749,
+    "seconds": 6.378,
+    "sum": 80146864.0
+  },
+  "2013-12-08": {
+    "fingerprint": "293663723:c6c6c4986969ded5",
+    "nonzero_frac": 0.997426,
+    "seconds": 6.218,
+    "sum": 77734928.0
+  },
+  "2013-12-09": {
+    "fingerprint": "338963272:bd40bd7c517979ac",
+    "nonzero_frac": 0.997463,
+    "seconds": 7.227,
+    "sum": 94087600.0
+  },
+  "2013-12-10": {
+    "fingerprint": "349269739:877474debd05b017",
+    "nonzero_frac": 0.997526,
+    "seconds": 7.231,
+    "sum": 99227848.0
+  },
+  "2013-12-11": {
+    "fingerprint": "351378560:7bab40fc68b0a265",
+    "nonzero_frac": 0.997428,
+    "seconds": 7.312,
+    "sum": 100530064.0
+  },
+  "2013-12-12": {
+    "fingerprint": "353930588:78fbd21b251e420d",
+    "nonzero_frac": 0.997474,
+    "seconds": 7.401,
+    "sum": 100400408.0
+  },
+  "2013-12-13": {
+    "fingerprint": "351454734:fe96a0591cdeb038",
+    "nonzero_frac": 0.997478,
+    "seconds": 7.238,
+    "sum": 93567784.0
+  },
+  "2013-12-14": {
+    "fingerprint": "310080286:db1d8bc6955f9011",
+    "nonzero_frac": 0.997394,
+    "seconds": 6.553,
+    "sum": 80002736.0
+  },
+  "2013-12-15": {
+    "fingerprint": "296653479:341773ba918fadb2",
+    "nonzero_frac": 0.997351,
+    "seconds": 6.19,
+    "sum": 76177288.0
+  },
+  "2013-12-16": {
+    "fingerprint": "342672644:483f7cc1b97b6817",
+    "nonzero_frac": 0.997484,
+    "seconds": 7.254,
+    "sum": 88886160.0
+  },
+  "2013-12-17": {
+    "fingerprint": "351108029:5ce7f2a659c36126",
+    "nonzero_frac": 0.997601,
+    "seconds": 7.251,
+    "sum": 91250152.0
+  },
+  "2013-12-18": {
+    "fingerprint": "350956602:48770846751fe60f",
+    "nonzero_frac": 0.997513,
+    "seconds": 7.316,
+    "sum": 90273064.0
+  },
+  "2013-12-19": {
+    "fingerprint": "356429243:aef6c514a593a534",
+    "nonzero_frac": 0.997417,
+    "seconds": 7.394,
+    "sum": 91505160.0
+  },
+  "2013-12-20": {
+    "fingerprint": "349357045:71c4a531bc6149c2",
+    "nonzero_frac": 0.996803,
+    "seconds": 7.323,
+    "sum": 89305128.0
+  },
+  "2013-12-21": {
+    "fingerprint": "313594501:09e0569866bd5214",
+    "nonzero_frac": 0.996726,
+    "seconds": 6.337,
+    "sum": 76497184.0
+  },
+  "2013-12-22": {
+    "fingerprint": "301004169:a6a5cfe82e3b33b1",
+    "nonzero_frac": 0.996517,
+    "seconds": 6.519,
+    "sum": 70951912.0
+  },
+  "2013-12-23": {
+    "fingerprint": "326617616:013808e42ab32cfe",
+    "nonzero_frac": 0.9967,
+    "seconds": 6.743,
+    "sum": 76325552.0
+  },
+  "2013-12-24": {
+    "fingerprint": "328653739:81d5452a72404d39",
+    "nonzero_frac": 0.995376,
+    "seconds": 6.689,
+    "sum": 68992080.0
+  },
+  "2013-12-25": {
+    "fingerprint": "324587326:e683534716d6d3a6",
+    "nonzero_frac": 0.995168,
+    "seconds": 6.513,
+    "sum": 62375840.0
+  },
+  "2013-12-26": {
+    "fingerprint": "281115796:b31b4c3646044ddd",
+    "nonzero_frac": 0.995094,
+    "seconds": 6.077,
+    "sum": 59294008.0
+  },
+  "2013-12-27": {
+    "fingerprint": "303320719:a812fd5f361902ba",
+    "nonzero_frac": 0.995228,
+    "seconds": 6.51,
+    "sum": 63414780.0
+  },
+  "2013-12-28": {
+    "fingerprint": "285311365:bec6cc1c42ded804",
+    "nonzero_frac": 0.995174,
+    "seconds": 6.042,
+    "sum": 59173316.0
+  },
+  "2013-12-29": {
+    "fingerprint": "277460259:819e8c17c31d43ed",
+    "nonzero_frac": 0.995178,
+    "seconds": 5.977,
+    "sum": 55358832.0
+  },
+  "2013-12-30": {
+    "fingerprint": "300546933:4b04c38ca9b430ec",
+    "nonzero_frac": 0.995225,
+    "seconds": 6.348,
+    "sum": 60015900.0
+  },
+  "2013-12-31": {
+    "fingerprint": "324184533:b40425784faad32b",
+    "nonzero_frac": 0.995219,
+    "seconds": 6.692,
+    "sum": 56843600.0
+  },
+  "2014-01-01": {
+    "fingerprint": "329510085:6d92cc207dd20522",
+    "nonzero_frac": 0.995019,
+    "seconds": 6.546,
+    "sum": 53165852.0
+  }
+}
