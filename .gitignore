@@ -4,9 +4,7 @@ artifacts/
 __pycache__/
 *.pyc
 .pytest_cache/
-results/figures/
 
 docs/
-Makefile
 outline.md
 report_draft.docx
