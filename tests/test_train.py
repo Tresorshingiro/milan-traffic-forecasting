@@ -1,4 +1,5 @@
 import json
+from dataclasses import replace
 
 import numpy as np
 import pytest
@@ -51,8 +52,8 @@ def test_training_loop_can_overfit_a_tiny_problem():
 
 
 @pytest.mark.slow
-def test_train_one_returns_every_documented_field():
-    cfg = load_config()
+def test_train_one_returns_every_documented_field(tmp_path):
+    cfg = replace(load_config(), results=tmp_path)     # keep the real ledger clean
     run = RunConfig(model="dlinear", area=4159, L=36, exp_id="TEST",
                     note="smoke test", hyperparams={"kernel": 25})
     result = train_one(cfg, run, save_predictions=False)
@@ -80,3 +81,13 @@ def test_baselines_are_evaluated_on_the_same_test_window():
     # which is itself a finding. Just assert both produced a real number.
     assert result["seasonal_naive"]["mase"] > 0
 
+
+@pytest.mark.slow
+def test_train_one_can_skip_inference_timing(tmp_path):
+    cfg = replace(load_config(), results=tmp_path)     # keep the real ledger clean
+    run = RunConfig(model="dlinear", area=4159, L=36, exp_id="TEST-NOTIME",
+                    hyperparams={"kernel": 25})
+    result = train_one(cfg, run, save_predictions=False, time_inference=False)
+    assert result["inference_ms_per_step"] is None
+    assert result["train_seconds"] > 0
+    assert (tmp_path / "experiments.jsonl").exists()

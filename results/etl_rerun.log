@@ -1,0 +1,87 @@
+[ 1/62] 2013-11-01    7.0s  peak_rss= 157.5 MB
+[ 2/62] 2013-11-02    6.9s  peak_rss= 176.3 MB
+[ 3/62] 2013-11-03    6.7s  peak_rss= 182.5 MB
+[ 4/62] 2013-11-04    7.5s  peak_rss= 188.7 MB
+[ 5/62] 2013-11-05    7.9s  peak_rss= 193.5 MB
+[ 6/62] 2013-11-06    7.9s  peak_rss= 198.8 MB
+[ 7/62] 2013-11-07    7.7s  peak_rss= 202.4 MB
+[ 8/62] 2013-11-08    7.7s  peak_rss= 207.9 MB
+[ 9/62] 2013-11-09    7.0s  peak_rss= 212.2 MB
+[10/62] 2013-11-10    6.6s  peak_rss= 216.5 MB
+[11/62] 2013-11-11    7.4s  peak_rss= 220.3 MB
+[12/62] 2013-11-12    7.3s  peak_rss= 225.2 MB
+[13/62] 2013-11-13    7.5s  peak_rss= 229.4 MB
+[14/62] 2013-11-14    7.7s  peak_rss= 234.8 MB
+[15/62] 2013-11-15    7.6s  peak_rss= 238.9 MB
+[16/62] 2013-11-16    6.8s  peak_rss= 243.9 MB
+[17/62] 2013-11-17    6.5s  peak_rss= 248.9 MB
+[18/62] 2013-11-18    7.3s  peak_rss= 254.9 MB
+[19/62] 2013-11-19    7.3s  peak_rss= 259.4 MB
+[20/62] 2013-11-20    7.6s  peak_rss= 264.6 MB
+[21/62] 2013-11-21    7.6s  peak_rss= 268.3 MB
+[22/62] 2013-11-22    7.6s  peak_rss= 274.2 MB
+[23/62] 2013-11-23    6.8s  peak_rss= 279.4 MB
+[24/62] 2013-11-24    6.5s  peak_rss= 284.8 MB
+[25/62] 2013-11-25    7.3s  peak_rss= 288.8 MB
+[26/62] 2013-11-26    7.4s  peak_rss= 293.6 MB
+[27/62] 2013-11-27    7.4s  peak_rss= 298.3 MB
+[28/62] 2013-11-28    7.3s  peak_rss= 304.4 MB
+[29/62] 2013-11-29    7.4s  peak_rss= 308.8 MB
+[30/62] 2013-11-30    6.6s  peak_rss= 314.0 MB
+[31/62] 2013-12-01    6.4s  peak_rss= 318.6 MB
+[32/62] 2013-12-02    7.1s  peak_rss= 324.5 MB
+[33/62] 2013-12-03    7.4s  peak_rss= 329.3 MB
+[34/62] 2013-12-04    7.4s  peak_rss= 334.9 MB
+[35/62] 2013-12-05    7.4s  peak_rss= 339.1 MB
+[36/62] 2013-12-06    7.5s  peak_rss= 343.2 MB
+[37/62] 2013-12-07    6.4s  peak_rss= 346.6 MB
+[38/62] 2013-12-08    6.2s  peak_rss= 351.8 MB
+[39/62] 2013-12-09    7.2s  peak_rss= 355.4 MB
+[40/62] 2013-12-10    7.2s  peak_rss= 359.1 MB
+[41/62] 2013-12-11    7.3s  peak_rss= 362.5 MB
+[42/62] 2013-12-12    7.4s  peak_rss= 370.0 MB
+[43/62] 2013-12-13    7.2s  peak_rss= 374.1 MB
+[44/62] 2013-12-14    6.6s  peak_rss= 378.3 MB
+[45/62] 2013-12-15    6.2s  peak_rss= 383.0 MB
+[46/62] 2013-12-16    7.3s  peak_rss= 385.9 MB
+[47/62] 2013-12-17    7.3s  peak_rss= 390.3 MB
+[48/62] 2013-12-18    7.3s  peak_rss= 393.2 MB
+[49/62] 2013-12-19    7.4s  peak_rss= 397.8 MB
+[50/62] 2013-12-20    7.3s  peak_rss= 400.8 MB
+[51/62] 2013-12-21    6.3s  peak_rss= 404.8 MB
+[52/62] 2013-12-22    6.5s  peak_rss= 408.6 MB
+[53/62] 2013-12-23    6.7s  peak_rss= 412.1 MB
+[54/62] 2013-12-24    6.7s  peak_rss= 415.6 MB
+[55/62] 2013-12-25    6.5s  peak_rss= 419.1 MB
+[56/62] 2013-12-26    6.1s  peak_rss= 419.3 MB
+[57/62] 2013-12-27    6.5s  peak_rss= 419.3 MB
+[58/62] 2013-12-28    6.0s  peak_rss= 419.3 MB
+[59/62] 2013-12-29    6.0s  peak_rss= 419.3 MB
+[60/62] 2013-12-30    6.3s  peak_rss= 419.3 MB
+[61/62] 2013-12-31    6.7s  peak_rss= 419.3 MB
+[62/62] 2014-01-01    6.5s  peak_rss= 419.3 MB
+{
+  "approach": "streaming_awk_reduction_to_float32_memmap",
+  "days_processed": 62,
+  "days_skipped_idempotent": 0,
+  "wall_seconds": 437.6,
+  "median_seconds_per_day": 7.24,
+  "peak_rss_mb": 419.3,
+  "raw_bytes": 20804803507,
+  "matrix_bytes": 357120128,
+  "reduction_factor": 58.3,
+  "matrix_shape": [
+    10000,
+    8928
+  ],
+  "dtype": "float32"
+}
+PYTHONPATH=src .venv/bin/python scripts/measure_memory.py
+{
+  "naive_peak_rss_mb_one_day": 716.4,
+  "streaming_peak_rss_mb_all_62_days": 419.3,
+  "rss_reduction_factor": 1.7,
+  "naive_extrapolated_seconds_62_days": 312.5,
+  "streaming_actual_seconds_62_days": 437.6,
+  "note": "The naive figure is measured on ONE day-file; the 62-day time is an explicit extrapolation, not a measurement. Its peak RSS does not extrapolate at all, because the naive approach holds one file at a time -- the point is that the streaming approach's peak stays flat while processing 56x more data into a single artifact."
+}

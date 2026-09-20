@@ -1,0 +1,124 @@
+{
+  "H1_predicted_winner_by_area": {
+    "5161": "dlinear",
+    "4159": "dlinear",
+    "4556": "tcn_or_gru"
+  },
+  "H1_actual_winner_by_area": {
+    "4159": "tcn",
+    "4556": "dlinear",
+    "5161": "tcn"
+  },
+  "H1_match_by_area": {
+    "4159": false,
+    "4556": false,
+    "5161": false
+  },
+  "H1_predicted_predictability_order": [
+    5161,
+    4159,
+    4556
+  ],
+  "H2_area_rankings_by_model": {
+    "dlinear": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        4556,
+        5161
+      ],
+      "agree": true
+    },
+    "gru": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        5161,
+        4556
+      ],
+      "agree": false
+    },
+    "persistence": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        4556,
+        5161
+      ],
+      "agree": true
+    },
+    "seasonal_naive": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        4556,
+        5161
+      ],
+      "agree": true
+    },
+    "tcn": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        5161,
+        4556
+      ],
+      "agree": false
+    }
+  },
+  "H2_supported": true,
+  "models_beating_seasonal_naive": {
+    "4159": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ],
+    "4556": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ],
+    "5161": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ]
+  },
+  "models_beating_persistence": {
+    "4159": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ],
+    "4556": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ],
+    "5161": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ]
+  }
+}

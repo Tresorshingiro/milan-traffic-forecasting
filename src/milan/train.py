@@ -71,7 +71,8 @@ def evaluate_baselines(cfg: Config, area: int) -> dict[str, dict]:
     return results
 
 
-def train_one(cfg: Config, run: RunConfig, save_predictions: bool = True) -> dict:
+def train_one(cfg: Config, run: RunConfig, save_predictions: bool = True,
+              time_inference: bool = True) -> dict:
     """Train one model on one area and score it on the test week.
 
     Returns the ledger record and appends it to results/experiments.jsonl.
@@ -137,13 +138,17 @@ def train_one(cfg: Config, run: RunConfig, save_predictions: bool = True) -> dic
         forecast = scaler.inverse(model(torch.from_numpy(X_test)).numpy())
 
     # Inference cost: median over 3 repeats of one full single-step pass over the week.
-    timings = []
-    for _ in range(3):
-        t0 = time.perf_counter()
-        with torch.no_grad():
-            for i in range(len(X_test)):
-                model(torch.from_numpy(X_test[i: i + 1]))
-        timings.append((time.perf_counter() - t0) / len(X_test) * 1000.0)
+    # Skipped during grid search, where only accuracy selects the configuration.
+    inference_ms = None
+    if time_inference:
+        timings = []
+        for _ in range(3):
+            t0 = time.perf_counter()
+            with torch.no_grad():
+                for i in range(len(X_test)):
+                    model(torch.from_numpy(X_test[i: i + 1]))
+            timings.append((time.perf_counter() - t0) / len(X_test) * 1000.0)
+        inference_ms = round(float(np.median(timings)), 4)
 
     metrics = all_metrics(truth_test, forecast, denom)
     record = {
@@ -163,7 +168,7 @@ def train_one(cfg: Config, run: RunConfig, save_predictions: bool = True) -> dic
         "test_skill": metrics["skill"],
         "mase_denominator": denom,
         "train_seconds": round(train_seconds, 2),
-        "inference_ms_per_step": round(float(np.median(timings)), 4),
+        "inference_ms_per_step": inference_ms,
         "peak_rss_mb": round(_peak_rss_mb(), 1),
     }
     append_ledger(cfg.ledger_path, record)

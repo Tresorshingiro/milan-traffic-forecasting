@@ -7,3 +7,6 @@ __pycache__/
 results/figures/
 
 docs/
+Makefile
+outline.md
+report_draft.docx

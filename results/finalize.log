@@ -1,0 +1,160 @@
+PYTHONPATH=src .venv/bin/python scripts/finalize.py
+FINAL-dlinear-5161 dlinear  area= 5161 val_mae= 106.121 test_mae=  83.205 MASE=0.240 skill=+0.760   8.0s
+FINAL-tcn-5161 tcn      area= 5161 val_mae=  95.757 test_mae=  79.551 MASE=0.229 skill=+0.771 132.3s
+FINAL-gru-5161 gru      area= 5161 val_mae= 100.379 test_mae=  81.364 MASE=0.234 skill=+0.766 305.0s
+FINAL-dlinear-4159 dlinear  area= 4159 val_mae=  22.329 test_mae=  14.284 MASE=0.175 skill=+0.825   7.8s
+FINAL-tcn-4159 tcn      area= 4159 val_mae=  19.625 test_mae=  13.571 MASE=0.166 skill=+0.834 240.7s
+FINAL-gru-4159 gru      area= 4159 val_mae=  20.518 test_mae=  14.068 MASE=0.172 skill=+0.828 506.9s
+FINAL-dlinear-4556 dlinear  area= 4556 val_mae=  33.812 test_mae=  25.609 MASE=0.228 skill=+0.772  18.8s
+FINAL-tcn-4556 tcn      area= 4556 val_mae=  32.895 test_mae=  25.908 MASE=0.231 skill=+0.769 236.8s
+FINAL-gru-4556 gru      area= 4556 val_mae=  33.016 test_mae=  26.758 MASE=0.238 skill=+0.762 748.5s
+
+=== Area 5161 ===
+         model     mae    rmse   mape  smape  mase  skill  n_parameters
+   persistence  92.802 134.878  9.194  9.096 0.267  0.733             0
+seasonal_naive 338.594 619.040 25.940 22.828 0.975  0.025             0
+       dlinear  83.205 127.043  7.697  7.643 0.240  0.760           290
+           tcn  79.551 121.514  7.227  7.145 0.229  0.771         34753
+           gru  81.364 122.815  7.907  7.708 0.234  0.766         12929
+
+=== Area 4159 ===
+         model    mae   rmse   mape  smape  mase  skill  n_parameters
+   persistence 15.952 21.544  6.982  6.943 0.195  0.805             0
+seasonal_naive 51.187 84.643 21.804 20.486 0.626  0.374             0
+       dlinear 14.284 19.539  6.142  6.135 0.175  0.825           290
+           tcn 13.571 18.749  5.724  5.724 0.166  0.834         34753
+           gru 14.068 19.395  6.132  6.073 0.172  0.828         37889
+
+=== Area 4556 ===
+         model    mae    rmse   mape  smape  mase  skill  n_parameters
+   persistence 28.862  39.621  6.600  6.553 0.257  0.743             0
+seasonal_naive 76.338 108.351 17.458 15.870 0.680  0.320             0
+       dlinear 25.609  34.751  5.791  5.762 0.228  0.772           290
+           tcn 25.908  34.822  5.953  5.844 0.231  0.769         34753
+           gru 26.758  36.102  6.126  5.995 0.238  0.762         37889
+
+=== HYPOTHESIS VERDICT ===
+{
+  "H1_predicted_winner_by_area": {
+    "5161": "dlinear",
+    "4159": "dlinear",
+    "4556": "tcn_or_gru"
+  },
+  "H1_actual_winner_by_area": {
+    "4159": "tcn",
+    "4556": "dlinear",
+    "5161": "tcn"
+  },
+  "H1_match_by_area": {
+    "4159": false,
+    "4556": false,
+    "5161": false
+  },
+  "H1_predicted_predictability_order": [
+    5161,
+    4159,
+    4556
+  ],
+  "H2_area_rankings_by_model": {
+    "dlinear": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        4556,
+        5161
+      ],
+      "agree": true
+    },
+    "gru": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        5161,
+        4556
+      ],
+      "agree": false
+    },
+    "persistence": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        4556,
+        5161
+      ],
+      "agree": true
+    },
+    "seasonal_naive": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        4556,
+        5161
+      ],
+      "agree": true
+    },
+    "tcn": {
+      "easiest_first_by_mae": [
+        4159,
+        4556,
+        5161
+      ],
+      "easiest_first_by_mase": [
+        4159,
+        5161,
+        4556
+      ],
+      "agree": false
+    }
+  },
+  "H2_supported": true,
+  "models_beating_seasonal_naive": {
+    "4159": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ],
+    "4556": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ],
+    "5161": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ]
+  },
+  "models_beating_persistence": {
+    "4159": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ],
+    "4556": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ],
+    "5161": [
+      "dlinear",
+      "gru",
+      "tcn"
+    ]
+  }
+}

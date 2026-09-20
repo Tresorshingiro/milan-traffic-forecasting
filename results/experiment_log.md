@@ -287,3 +287,228 @@ on validation (4.6%) is larger than any single gain in E2–E4, which makes it t
 robust result in Phase 1. It is still one run per model.
 
 **Conclusion carried into Phase 2:** L = 144, log1p = True, loss = Huber (δ = 0.3)
+
+---
+
+# Phase 2 — grid search and final runs
+
+Areas: 5161 (busiest), 4159, 4556, the three target areas from `target_areas()`.
+Fixed from Phase 1: L=144, log1p + standardise, Huber δ = 0.3. Seed 42, CPU, 4 threads.
+Raw records: `E6-*` and `FINAL-*` rows in `results/experiments.jsonl`.
+
+---
+
+## E6 — Architecture grid, 20 configurations per area, 60 runs
+
+**Grid:** DLinear kernel ∈ {25, 145}; TCN channels ∈ {16, 32} × dropout ∈ {0.0, 0.1};
+GRU hidden ∈ {32, 64} × layers ∈ {1, 2}; each × lr ∈ {1e-3, 3e-4}. Selection on
+validation MAE only. Total training time 4.1 h. The machine was CPU-throttled for the
+first part of the search (see "Timing caveat" below), so E6 wall-clock times are not
+comparable with each other; only the FINAL rows' timings are reported.
+
+**Selected configurations (lowest validation MAE):**
+
+| area | model | selected | val MAE | spread across grid |
+|---|---|---|---|---|
+| 5161 | dlinear | kernel 145, lr 1e-3 | 106.12 | 2.6% |
+| 5161 | tcn | 32 ch, dropout 0.0, lr 1e-3 | **95.76** | 7.2% |
+| 5161 | gru | hidden 64, 1 layer, lr 1e-3 | 100.38 | 3.7% |
+| 4159 | dlinear | kernel 145, lr 1e-3 | 22.33 | 0.3% |
+| 4159 | tcn | 32 ch, dropout 0.1, lr 1e-3 | **19.63** | 2.6% |
+| 4159 | gru | hidden 64, 2 layers, lr 1e-3 | 20.52 | 2.1% |
+| 4556 | dlinear | kernel 145, lr 3e-4 | 33.81 | 0.5% |
+| 4556 | tcn | 32 ch, dropout 0.1, lr 1e-3 | **32.90** | 1.4% |
+| 4556 | gru | hidden 64, 2 layers, lr 1e-3 | 33.02 | 4.7% |
+
+"Spread" is (worst − best) / best validation MAE within one model's grid on one area.
+
+**Observation:** On area 5161 the grid selected exactly the E5 configurations for the
+TCN (32 channels, no dropout) and the GRU (hidden 64, 1 layer). Only DLinear changed,
+from kernel 25 to 145, a 1.0% validation gain. The Phase-1 defaults were therefore
+already the best in the grid on the area they were tuned on.
+
+Three patterns hold across areas:
+
+1. **DLinear prefers kernel 145 everywhere.** A moving average spanning a full day
+   separates the daily cycle from the slower level, which suits a daily-periodic series.
+   The effect is tiny (spread 0.3–2.6%): a 290-parameter linear model has little room to
+   vary.
+2. **The larger TCN (32 channels) wins on every area**, and dropout 0.1 helps on the two
+   smaller areas (4159, 4556) but not on 5161. The two smaller areas are noisier in
+   relative terms (lower level, same absolute noise), which is where regularisation
+   would be expected to help.
+3. **The GRU moves to 2 layers on the smaller areas** but stays at 1 layer on 5161.
+   Two-layer GRUs are also the slowest configurations by a wide margin.
+
+The learning rate matters little. Averaged over each model's grid, lr 1e-3 and 3e-4
+differ by at most 2% in validation MAE (TCN on 5161), and in most cells by under 0.5%.
+lr 3e-4 mainly costs more epochs. 8 of 9 selected configurations use lr 1e-3.
+
+Model choice matters more than any hyperparameter. The grid spread within a model
+(0.3–7.2%) is of the same order as the gap between models, so the architecture
+comparison below is sensitive to single-seed noise.
+
+**Test-set discipline check:** the best *test* result in the grid is not always the
+selected one. On 5161, `E6-tcn-02` (16 channels, dropout 0.1) has test MAE 77.71, better
+than the selected TCN's 79.55, but it ranks fourth on validation and was not chosen.
+Selecting on test would have inflated the TCN's result by 2.3%.
+
+**Timing caveat:** for roughly the first hour of the grid the CPU ran at about 1.2 GHz
+(of 3.5 GHz) under the `balanced` power profile with other applications open; it was
+then switched to `performance` (about 2.3 GHz). This does not affect accuracy — every
+run is deterministic, and all nine FINAL re-trains reproduced their grid rows'
+validation MAE exactly — but it makes E6 wall-clock times unreliable.
+
+---
+
+## E7 — Final runs: best configuration per (model, area), scored on the test week
+
+Each selected configuration was re-trained once with inference timing and saved
+predictions (`FINAL-*` rows). All nine reproduced their E6 validation MAE exactly.
+Tables: `results/tables/results_area_<id>.csv`, `timing.csv`, `hypothesis_test.json`.
+
+**Test week (Dec 16–22) results:**
+
+| area | model | MAE | RMSE | MAPE % | sMAPE % | MASE | params |
+|---|---|---|---|---|---|---|---|
+| 5161 | persistence | 92.80 | 134.88 | 9.19 | 9.10 | 0.267 | 0 |
+| 5161 | seasonal-naive | 338.59 | 619.04 | 25.94 | 22.83 | 0.975 | 0 |
+| 5161 | dlinear | 83.21 | 127.04 | 7.70 | 7.64 | 0.240 | 290 |
+| 5161 | **tcn** | **79.55** | **121.51** | **7.23** | **7.14** | **0.229** | 34,753 |
+| 5161 | gru | 81.36 | 122.82 | 7.91 | 7.71 | 0.234 | 12,929 |
+| 4159 | persistence | 15.95 | 21.54 | 6.98 | 6.94 | 0.195 | 0 |
+| 4159 | seasonal-naive | 51.19 | 84.64 | 21.80 | 20.49 | 0.626 | 0 |
+| 4159 | dlinear | 14.28 | 19.54 | 6.14 | 6.14 | 0.175 | 290 |
+| 4159 | **tcn** | **13.57** | **18.75** | **5.72** | **5.72** | **0.166** | 34,753 |
+| 4159 | gru | 14.07 | 19.40 | 6.13 | 6.07 | 0.172 | 37,889 |
+| 4556 | persistence | 28.86 | 39.62 | 6.60 | 6.55 | 0.257 | 0 |
+| 4556 | seasonal-naive | 76.34 | 108.35 | 17.46 | 15.87 | 0.680 | 0 |
+| 4556 | **dlinear** | **25.61** | **34.75** | **5.79** | **5.76** | **0.228** | 290 |
+| 4556 | tcn | 25.91 | 34.82 | 5.95 | 5.84 | 0.231 | 34,753 |
+| 4556 | gru | 26.76 | 36.10 | 6.13 | 6.00 | 0.238 | 37,889 |
+
+No MAPE targets were excluded (every test value is above the 1e-3 threshold).
+
+**Cost (FINAL runs, performance power profile):**
+
+| area | model | train s | inference ms/step | epochs (best / run) |
+|---|---|---|---|---|
+| 5161 | dlinear | 8.0 | 0.16 | 22 / 33 |
+| 5161 | tcn | 132.3 | 3.69 | 13 / 24 |
+| 5161 | gru | 305.0 | 5.32 | 33 / 44 |
+| 4159 | dlinear | 7.8 | 0.17 | 20 / 31 |
+| 4159 | tcn | 240.7 | 3.54 | 25 / 36 |
+| 4159 | gru | 506.9 | 10.56 | 25 / 36 |
+| 4556 | dlinear | 18.8 | 0.16 | 70 / 81 |
+| 4556 | tcn | 236.8 | 3.49 | 26 / 37 |
+| 4556 | gru | 748.5 | 10.59 | 42 / 53 |
+
+**Observation — every model beats both baselines on every area.** Against persistence,
+the demanding baseline here, test MAE falls by 10.3–14.3% on 5161, 10.5–14.9% on 4159
+and 7.3–11.3% on 4556. Against seasonal-naive the gains are 65–77%, but seasonal-naive
+is weak at a 10-minute horizon: on 5161 its MASE is 0.975, barely better than itself
+in-sample.
+
+The three models are close. Within each area, the best and worst model differ by
+4.6% (5161), 5.2% (4159) and 4.5% (4556) in test MAE. With one seed, that is weak
+evidence for any ranking.
+
+**Validation and test disagree on area 4556.** On validation the order is
+TCN < GRU < DLinear on all three areas. On the test week it is the same for 5161 and
+4159, but on 4556 it flips to DLinear < TCN < GRU. DLinear's test lead there is 1.2%
+over the TCN. A procedure that selects on validation would pick the TCN on every area.
+
+**Cost is where the models separate.** DLinear reaches within 5.2% of the best test
+MAE on every area (and wins one) with 290 parameters, 0.8% of the TCN's. It trains in
+8–19 s against 2–12 min, and predicts 21–66× faster per step (0.16 ms against
+3.5–10.6 ms). The TCN is again faster than the GRU at similar or larger size, because
+it convolves over all 144 inputs in parallel.
+
+---
+
+## Hypothesis tests
+
+**H1 — not supported.** The pre-registered prediction (`prediction.json`, committed
+before any model was trained) was DLinear on 5161 and 4159, and TCN/GRU on 4556. The
+test-week winners by MASE were TCN on 5161, TCN on 4159, and DLinear on 4556: the
+prediction failed on all three areas, and on 4556 the outcome was the exact reverse.
+Using the validation ranking instead (TCN everywhere), the prediction holds only on 4556,
+1 of 3.
+
+Two caveats limit what this negative result means. First, the prediction rule split the
+three areas at the median predictability score, so it assigned DLinear to two of three
+areas by construction, whatever the profiles said. Second, the model gaps (≤ 5%) are of
+the same order as single-seed and grid variation, so "winner" is a fragile label here.
+What the data does support is weaker but more interesting: capacity did not buy much
+anywhere. The most "predictable" area by the profile score (5161) is also where the
+TCN's advantage is largest, the opposite of what H1 expected.
+
+**H2 — supported.** Within one area MAE and MASE always rank models identically, because
+MASE divides by a per-area constant. Across areas they disagree. Ranked easiest to
+hardest, raw MAE puts the areas in the order 4159, 4556, 5161 for every model — the same
+as their traffic volume. By MASE, the TCN and the GRU rank 5161 (0.229, 0.234) as easier
+than 4556 (0.231, 0.238). Raw MAE would call the busiest area the hardest for these
+models, when relative to its own seasonal-naive benchmark it is not.
+
+---
+
+## Failure analysis (`results/tables/failure_analysis.json`, figures 09–10)
+
+**1. Phase lag — the clearest failure, and it affects every model.** Shifting each
+model's forecast one step earlier reduces its test MAE substantially:
+
+| area | model | MAE as issued | MAE shifted by 1 | reduction |
+|---|---|---|---|---|
+| 5161 | dlinear | 83.36 | 59.74 | 28% |
+| 5161 | tcn | 79.70 | 69.94 | 12% |
+| 5161 | gru | 81.53 | 58.67 | 28% |
+| 4159 | dlinear | 14.30 | 9.07 | 37% |
+| 4159 | tcn | 13.58 | 10.59 | 22% |
+| 4159 | gru | 14.08 | 9.66 | 31% |
+| 4556 | dlinear | 25.55 | 16.27 | 36% |
+| 4556 | tcn | 25.81 | 19.24 | 25% |
+| 4556 | gru | 26.70 | 19.34 | 28% |
+
+(MAE here is computed on the 1,005 points common to all shifts, so it differs slightly
+from the table above.) Each forecast partly tracks the previous observed value rather
+than anticipating the next one: part of what the models learned is persistence. The
+TCN is the least lagged model on every area, which fits its leading accuracy. On 5161
+the residuals also keep lag-1 autocorrelation of about +0.3 for all three models, so
+consecutive errors are not independent.
+
+**2. Error by hour of day.** Errors are small overnight (MAE about 10–50 on 5161) and
+concentrate between 09:00 and 20:00, peaking near 13:00–15:00 at up to about 285. That is where
+traffic is highest and changes fastest. In relative terms the pattern is the reverse,
+which is why MAPE is sensitive to the night-time regime.
+
+**3. Day-to-day drift — not the holiday effect the plan expected.** On 5161, error is
+highest on Sat Dec 21 and Sun Dec 22. But those days' peaks (5,238 and 5,496) are within
+the range of training weekends (up to 8,044): 5161 simply peaks at weekends, and larger
+values bring larger absolute errors. On 4159 and 4556 the drift runs the other way:
+traffic falls into December. On 4159, weekday peaks drop from about 745 in the
+validation week to about 520 in the test week, against up to 941 in training. This lower
+level is a genuine distribution shift that the chronological split exposes.
+
+This also answers the question left open in E1 (why validation MAE exceeds test MAE).
+On every area, the ratio of test to validation MAE tracks the ratio of traffic levels
+between the two weeks: on 4159, weekday peaks fall to about 0.70 of their validation
+level and the TCN's MAE to 0.69 of it; on 4556, about 0.8 and 0.79. Absolute error
+scales with traffic, and the test week is simply quieter than the validation week.
+
+**4. Worst single errors.** On 5161, Dec 17 at 15:30–16:00 (errors 565–616), a sharp
+afternoon swing. On 4556, Dec 17 at 00:40 (error 294): a one-slot spike from about 415
+to 718 and straight back. No one-step model can anticipate an isolated spike, and a
+persistence-like model is then wrong twice — at the spike and on the slot after it.
+
+---
+
+## Conclusion of Phase 2
+
+All three architectures beat both baselines on all three areas, by 7–15% over
+persistence. The TCN is best on validation everywhere and on test in two of three areas,
+but the margins are within single-seed noise. DLinear matches the deep models to within
+5.2% at a small fraction of their cost. H1 is not supported; H2 is. The main shared
+weakness is phase lag: every model is partly persistence.
+
+**Open items:** multiple seeds for the nine final configurations (turns the ≤ 5% gaps
+into a testable claim); DLinear and TCN under E1's settings (the missing E5 control).
